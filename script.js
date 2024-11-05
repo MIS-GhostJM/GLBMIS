@@ -1,9 +1,9 @@
 // Constants
 const CONSTANTS = {
-  MAX_TAX_ROWS: 20,
+  MAX_TAX_ROWS: 25,
   DEBOUNCE_DELAY: 300,
   MIN_TAX_ROWS: 1,
-  COPY_SUCCESS_DURATION: 2000
+  COPY_SUCCESS_DURATION: 1000
 };
 
 // State management
