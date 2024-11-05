@@ -79,8 +79,6 @@ function generateSummaryText() {
   summaryText += "=======================\n";
   
   // Base fare section
-  summaryText += `Base Old Fare: ${document.getElementById("baseOldFare").value || '0.00'}\n`;
-  summaryText += `Base New Fare: ${document.getElementById("baseNewFare").value || '0.00'}\n`;
   summaryText += `Base Fare Difference: ${document.getElementById("totalBaseFare").innerText}\n\n`;
   
   // Penalties section if applicable
@@ -88,19 +86,15 @@ function generateSummaryText() {
       summaryText += "Penalties:\n";
       summaryText += `Airline Penalty: ${formatCurrency(penalties.airlinePenalty)}\n`;
       summaryText += `Service Fee: ${formatCurrency(penalties.serviceFee)}\n\n`;
+      summaryText += `\nOverall Tax Difference: ${document.getElementById("taxDifference").innerText}\n`;
+      summaryText += `Total Fare Difference: ${document.getElementById("totalFareDiff").innerText}`;
   }
   
   // Tax breakdown section
   summaryText += "Tax Breakdown:\n";
   Object.entries(state.calculations.taxBreakdown).forEach(([taxType, difference]) => {
       summaryText += `${taxType} Tax: ${formatCurrency(difference)}\n`;
-  });
-  summaryText += `\nOverall Tax Difference: ${document.getElementById("taxDifference").innerText}\n`;
-  
-  // Total section
-  summaryText += "\n=======================\n";
-  summaryText += `Total Fare Difference: ${document.getElementById("totalFareDiff").innerText}`;
-  
+  });  
   return summaryText;
 }
 
