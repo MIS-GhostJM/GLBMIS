@@ -1,10 +1,9 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fare Difference Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +11,7 @@
         <div class="main-content" role="main">
             <h1>Fare Difference Calculator</h1>
             
-            <button class="clear-fields-button">Clear Fields</button>
+            <button class="clear-fields-button" id="clear-fields-button">Clear Fields</button>
             
             <div class="controls">
                 <div class="input-group">
@@ -24,25 +23,23 @@
                     <input type="number" id="baseNewFare" placeholder="0.00" min="0" step="0.01">
                 </div>
             </div>
-
             <div class="controls">
                 <div class="input-group">
-                    <label for="flexibilitySelect">Ticket Product Flexibility:</label>
+                    <label for="flexibilitySelect">Flexibility:</label>
                     <select id="flexibilitySelect">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
-                <div id="airlinePenaltyRow" class="input-group" style="display: none;">
+                <div class="input-group" id="airlinePenaltyRow" style="display: none;">
                     <label for="airlinePenalty">Airline Penalty:</label>
                     <input type="number" id="airlinePenalty" placeholder="0.00" min="0" step="0.01">
                 </div>
-                <div id="serviceFeeRow" class="input-group" style="display: none;">
+                <div class="input-group" id="serviceFeeRow" style="display: none;">
                     <label for="serviceFee">Service Fee:</label>
                     <input type="number" id="serviceFee" placeholder="0.00" min="0" step="0.01">
                 </div>
             </div>
-
             <div class="table-container">
                 <table>
                     <thead>
@@ -65,63 +62,69 @@
                     </tbody>
                 </table>
             </div>
-
-            <button id="addTaxButton" class="add-tax-button">Add Tax Row</button>
-
+            <button class="add-tax-button" id="addTaxButton" onclick="addTaxRow()">Add Tax Row</button>
             <div id="maxTaxAlert" class="alert" style="display: none;">
                 Maximum number of tax rows reached.
             </div>
         </div>
-
         <div class="side-panel">
             <div class="notes">
-                <h4>Notes</h4>
+                <h3>Notes</h3>
                 <ul>
                     <li>All penalties and difference must be charged following the Quouted curreny in your GDS tool.</li>
                     <li>All calculations are per traveller.</li>
                 </ul>
             </div>
-
             <div class="summary">
                 <div class="summary-header">
                     <h2>Summary</h2>
-                    <button id="copyButton" class="copy-button" title="Copy Summary">
+                    <button class="copy-button" id="copyButton" onclick="handleCopy()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </button>
                 </div>
-
+                <div class="summary-item" style="display: none;">
+                    <span>Base Fare Difference:</span>
+                    <span class="currency" id="totalBaseFare">0.00</span>
+                </div>
                 <div class="summary-item">
                     <span>Base Fare Difference:</span>
-                    <span id="totalBaseFare" class="currency">0.00</span>
+                    <span class="currency" id="totalBaseFareshow">0.00</span>
                 </div>
-                
-                <div id="taxBreakdown" class="tax-breakdown">
+                <div class="summary-item" id="Penaltysummary" style="display: none;">
+                    <span>Airline Penalty:</span>
+                    <span class="currency" id="Penaltysummary">0.00</span>
+                </div>
+                <div class="summary-item" id="Servicefeesummary" style="display: none;">
+                    <span>Service Fee:</span>
+                    <span class="currency" id="Servicefeesummary">0.00</span>
+                </div>
+                <div class="tax-breakdown">
                     <h3>Tax Breakdown</h3>
                     <div class="tax-list"></div>
                 </div>
-
                 <div class="summary-item">
                     <span>Overall Tax Difference:</span>
-                    <span id="taxDifference" class="currency">0.00</span>
+                    <span class="currency" id="taxDifference">0.00</span>
                 </div>
-
                 <div class="summary-item total">
                     <span>Total Fare Difference:</span>
-                    <span id="totalFareDiff" class="currency">0.00</span>
+                    <span class="currency" id="totalFareDiff">0.00</span>
                 </div>
             </div>
         </div>
     </div>
-
     <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
         <div class="footer-copyright">
-            © 2024 Fare Calculator ||Global MIS Application|| Molina J.M.
+            © 2024 Fare Calculator || Global MIS Application || Molina J.M.
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
