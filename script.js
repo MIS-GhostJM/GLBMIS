@@ -1,5 +1,5 @@
 let taxRowCount = 1;  // Start with 1 to indicate only the initial row
-const MAX_TAX_ROWS = 10;
+const MAX_TAX_ROWS = 20;
 const CONSTANTS = {
     COPY_SUCCESS_DURATION: 2000 // duration in milliseconds (2 seconds)
 };
