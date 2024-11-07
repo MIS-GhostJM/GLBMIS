@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currencies = [];
 
     // Load currencies from the JSON file
-    fetch('https://mis-ghostjm.github.io/Test/currencies.json')
+    fetch('https://mis-ghostjm.github.io/GLBMIS/currencies.json')
         .then(response => response.json())
         .then(data => {
             currencies = data;
